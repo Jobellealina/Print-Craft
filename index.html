@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Print Craft</title>
+  <style>
+    /* ===== Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-image: url(bg.png);
+      background-size: cover;
+      background-attachment: fixed;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== Navbar ===== */
+    nav {
+      background: linear-gradient(90deg,#575ff0, #ff4d4d );
+      color: #fff;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: #295d35;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 50px 10%;
+    }
+
+    /* ===== Home Section ===== */
+    .home {
+      text-align: center;
+    }
+
+    .home h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #8a0b81;
+    }
+
+    .home p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #575ff0;
+    }
+
+    /* ===== Products Section ===== */
+    .products {
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .product-card {
+      padding: 15px;
+      border-left: 8px solid;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateX(5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .product-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #575ff0;
+    }
+
+    .product-card p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Product colors */
+    .product-card:nth-child(1) { border-color: lightblue; }
+    .product-card:nth-child(2) { border-color: pink; }
+    .product-card:nth-child(3) { border-color: lightgreen; }
+    .product-card:nth-child(4) { border-color: #ffcc66; }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(90deg, #575ff0, #ff4d4d);
+      color: #fff;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Navbar ===== -->
+  <nav>
+    <div class="logo">
+      <img src="logo.jpg" alt="Print Craft Logo">
+      <h2>Print Craft</h2>
+    </div>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Home Section ===== -->
+  <section id="home" class="home">
+    <h2>Welcome to Print Craft!</h2><br>
+    <p>Your <span class="highlight">one-stop shop</span> for creative printing and crafting solutions.</p>
+    <p>From <span class="highlight">documents</span> to <span class="highlight">decorations</span>, we turn your ideas into beautifully printed realities.</p>
+    <p>Explore our wide range of <span class="highlight">print & craft services</span> designed to make every detail stand out.</p>
+  </section>
+
+  <!-- ===== Products Section ===== -->
+  <section id="products">
+    <h2 style="text-align:center; margin-bottom:30px; font-size:2rem; color:#8a0b81;">Our Products</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="LCHD.jpg" alt="Laminated Christmas Hanging Decor">
+        <h3>Laminated Christmas Hanging Decor</h3>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/400x300" alt="2026 Calendar">
+        <h3>2026 Calendar</h3>
+        <p>Stay organized with our customizable 2026 calendar.</p>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/400x300" alt="ATM Size Ref Magnet">
+        <h3>ATM Size Ref Magnet</h3>
+        <p>Compact and handy ref magnets in ATM size with custom prints.</p>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Magnetic Acrylic Souvenir">
+        <h3>Magnetic Acrylic Souvenir</h3>
+        <p>Unique magnetic acrylic souvenirs for any occasion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>© 2025 Print Craft. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
