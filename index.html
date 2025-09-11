@@ -5,205 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Print Craft</title>
   <style>
-    /* ===== Reset ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family:monospace;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:monospace;}
+    body{background-image:url(bg.png);background-size:cover;background-attachment:fixed;color:#333;scroll-behavior:smooth;}
+    nav{background:linear-gradient(90deg,#9ea2f3,#ec9cd4);color:#fff;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;}
+    nav .logo{display:flex;align-items:center;}
+    nav .logo img{height:40px;margin-right:10px;border-radius:5px;}
+    nav ul{list-style:none;display:flex;gap:20px;}
+    nav ul li a{color:#fff;text-decoration:none;font-weight:bold;transition:color 0.3s;}
+    nav ul li a.active,nav ul li a:hover{color:#1c26ed;}
+    .menu-toggle{display:none;flex-direction:column;cursor:pointer;}
+    .menu-toggle span{height:3px;width:25px;background:#fff;margin:4px 0;border-radius:5px;transition:0.3s;}
+    @media(max-width:768px){
+      nav ul{position:absolute;top:65px;right:0;width:200px;background:linear-gradient(90deg,#9ea2f3,#ec9cd4);flex-direction:column;gap:15px;padding:20px;display:none;}
+      nav ul.show{display:flex;}
+      .menu-toggle{display:flex;}
+      .table-container{flex-direction:column;align-items:center;}
+      .table-box{width:90%;}
     }
+    section{padding:50px 10%;}
+    .home{text-align:center;}
+    .home h2{font-size:2rem;margin-bottom:20px;color:#8a0b81;}
+    .home p{font-size:1.2rem;margin-bottom:15px;line-height:1.6;}
+    .highlight{font-weight:bold;color:#575ff0;}
+    .table-container{display:flex;justify-content:center;gap:30px;margin-top:30px;flex-wrap:wrap;}
+    .table-box{width:45%;min-width:280px;}
+    table{width:100%;border-collapse:collapse;text-align:left;background:rgba(255,255,255,0.9);}
+    table th,table td{padding:10px;border:1px solid #ccc;font-size:0.9rem;}
+    table thead tr{background:linear-gradient(90deg,#9ea2f3,#ec9cd4);color:#fff;}
+    .products{margin:30px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;text-align:left;}
+    .product-card{padding:15px;border-left:8px solid;background:rgba(255,255,255,0.6);border-radius:8px;transition:transform 0.3s;position:relative;}
+    .product-card:hover{transform:translateX(5px);}
+    .product-card img{width:100%;height:350px;object-fit:cover;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    .product-card h3{font-size:1.2rem;margin-bottom:10px;color:#b0227a;}
+    .product-card:nth-child(1){border-color:lightblue;}
+    .product-card:nth-child(2){border-color:pink;}
+    .product-card:nth-child(3){border-color:lightgreen;}
+    .product-card:nth-child(4){border-color:#ffcc66;}
+    .product-card:nth-child(5){border-color:#2a11cb;}
+    .product-card:nth-child(6){border-color:#f24954;}
+    .product-card:nth-child(7){border-color:#30d855;}
+    .product-card:nth-child(8){border-color:#e29a0b;}
+    footer{text-align:center;padding:20px;background:linear-gradient(90deg,#9ea2f3,#ec9cd4);color:#fff;margin-top:40px;}
 
-    body {
-      background-image: url(bg.png);
-      background-size: cover;
-      background-attachment: fixed;
-      color: #333;
-      scroll-behavior: smooth;
-    }
-
-    /* ===== Navbar ===== */
-    nav {
-      background: linear-gradient(90deg,#9ea2f3, #ec9cd4 );
-      color: #fff;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    nav .logo img {
-      height: 40px;
-      margin-right: 10px;
-      border-radius: 5px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav ul li a.active,
-    nav ul li a:hover {
-      color: #1c26ed;
-    }
-
-    /* ===== Hamburger Menu ===== */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: #fff;
-      margin: 4px 0;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      nav ul {
-        position: absolute;
-        top: 65px;
-        right: 0;
-        width: 200px;
-        background: linear-gradient(90deg,#9ea2f3, #ec9cd4 );
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
-        display: none;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-    }
-
-    /* ===== Sections ===== */
-    section {
-      padding: 50px 10%;
-    }
-
-    /* ===== Home Section ===== */
-    .home {
-      text-align: center;
-    }
-
-    .home h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #8a0b81;
-    }
-
-    .home p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
-    .highlight {
-      font-weight: bold;
-      color: #575ff0;
-    }
-
-    /* ===== Products Section ===== */
-    .products {
-      margin: 30px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      text-align: left;
-    }
-
-    .product-card {
-      padding: 15px;
-      border-left: 8px solid;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 8px;
-      transition: transform 0.3s;
-    }
-
-    .product-card:hover {
-      transform: translateX(5px);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .product-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: #b0227a;
-    }
-
-    .product-card p {
-      font-size: 1rem;
-      color: #333;
-    }
-
-    /* Product colors */
-    .product-card:nth-child(1) { border-color: lightblue; }
-    .product-card:nth-child(2) { border-color: pink; }
-    .product-card:nth-child(3) { border-color: lightgreen; }
-    .product-card:nth-child(4) { border-color: #ffcc66; }
-    .product-card:nth-child(5) { border-color: #2a11cb; }
-    .product-card:nth-child(6) { border-color: #f24954; }
-    .product-card:nth-child(7) { border-color: #30d855; }
-    .product-card:nth-child(8) { border-color: #e29a0b; }
-
-    /* ===== Footer ===== */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(90deg,#9ea2f3, #ec9cd4 );
-      color: #fff;
-      margin-top: 40px;
-    }
+    /* Slideshow for product 1 */
+    .slideshow-container {position: relative;width: 100%;height: 350px;overflow: hidden;border-radius: 8px;box-shadow: 0 4px 12px rgba(0,0,0,0.2);margin-bottom:15px;}
+    .slideshow-container img {width: 100%;height: 100%;object-fit: cover;display: none;border-radius: 8px;}
+    .slideshow-container img.active {display: block;}
   </style>
 </head>
 <body>
-  <!-- ===== Navbar ===== -->
   <nav>
     <div class="logo">
       <img src="logo.jpg" alt="Print Craft Logo">
       <h2>Print Craft</h2>
     </div>
-
     <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
-
     <ul id="nav-links">
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#products">Products</a></li>
@@ -211,66 +69,88 @@
     </ul>
   </nav>
 
-  <!-- ===== Home Section ===== -->
   <section id="home" class="home">
     <h2>Welcome to Print Craft!</h2><br>
     <p>Your <span class="highlight">one-stop shop</span> for creative printing and crafting solutions.</p>
     <p>From <span class="highlight">documents</span> to <span class="highlight">decorations</span>, we turn your ideas into beautifully printed realities.</p>
     <p>Explore our wide range of <span class="highlight">print & craft services</span> designed to make every detail stand out.</p>
-  </section>
-
-  <!-- ===== Products Section ===== -->
-  <section id="products">
-    <h2 style="text-align:center; margin-bottom:30px; font-size:2rem; color:#8a0b81;">Our Products</h2>
-    <div class="products">
-      <div class="product-card">
-        <img src="LCHD.jpg" alt="Laminated Christmas Hanging Decor">
-        <h3>Laminated Christmas Hanging Decor <br><br> ₱110 only</h3>
+<br><br><br>
+    <div class="table-container">
+      <div class="table-box">
+        <h3 style="color:#8a0b81; text-align:center; margin-bottom:10px;">Craft & Personalized Products</h3>
+        <table>
+          <thead><tr><th>Product</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Laminated Christmas Hanging Decor</td><td>₱110</td></tr>
+            <tr><td>Personalized 2026 Calendar</td><td>₱150</td></tr>
+            <tr><td>Polaroid Inspired (10pcs)</td><td>₱60</td></tr>
+            <tr><td>Personalized Regular Size Keychain</td><td>₱25</td></tr>
+            <tr><td>Personalized Photostrip Keychain</td><td>₱35</td></tr>
+            <tr><td>Customized ATM Size Ref Magnet</td><td>₱20</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="product-card">
-        <img src="2026 Phil. Calendar.png" alt="2026 Calendar">
-        <h3> Personalized 2026 Calendar <br><br><br> ₱150 only</h3>
-      </div>
-       <div class="product-card">
-        <img src="a4-2r.png" alt="Photo Print">
-        <h3>Photo Print 2R - A4 <br><br><br> ₱ Depends on size </h3>
-      </div>
-      <div class="product-card">
-        <img src="instax.jpg" alt="Polaroid Inspired">
-        <h3>Polaroid Inspired <br><br><br> ₱60 for 10pcs only </h3>
-      </div>
-      <div class="product-card">
-        <img src="Reg Keychain.jpg" alt="Regular Size Keychain">
-        <h3>Personalized Regular Size Keychain <br><br><br> ₱25 only </h3>
-      </div>
-      <div class="product-card">
-        <img src="Photostrip.jpg" alt="Photo Strip Keychain">
-        <h3>Personalized Photostrip Keychain <br><br><br> ₱35 only </h3>
-      </div>
-     <div class="product-card">
-        <img src="Atm.jpg" alt="ATM Size Ref Magnet">
-        <h3>Customized ATM Size Ref Magnet <br><br><br> ₱20 only</h3>
-      </div>
-      <div class="product-card">
-        <img src="sov.png" alt="Souvenir">
-        <h3><br><br><br>📩 Send us a DM on Facebook for inquiries!</h3>
+      <div class="table-box">
+        <h3 style="color:#8a0b81; text-align:center; margin-bottom:10px;">Photo Prints Price List</h3>
+        <table>
+          <thead><tr><th>Product</th><th>Price</th><th>Bulk Pricing</th></tr></thead>
+          <tbody>
+            <tr><td>2R</td><td>₱7</td><td>₱5 - 10 pcs</td></tr>
+            <tr><td>3R</td><td>₱8</td><td>₱152 - 20 pcs<br>₱360 - 50 pcs<br>₱680 - 100 pcs</td></tr>
+            <tr><td>4R</td><td>₱11</td><td>₱210 - 20 pcs<br>₱495 - 50 pcs<br>₱935 - 100 pcs</td></tr>
+            <tr><td>5R</td><td>₱18</td><td>₱342 - 20 pcs<br>₱810 - 50 pcs<br>₱1,530 - 100 pcs</td></tr>
+            <tr><td>6R</td><td>₱25</td><td>₱475 - 20 pcs<br>₱1,125 - 50 pcs<br>₱2,125 - 100 pcs</td></tr>
+            <tr><td>8R</td><td>₱35</td><td>-</td></tr>
+            <tr><td>A4</td><td>₱50</td><td>-</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- ===== Footer ===== -->
+  <section id="products">
+    <h2 style="text-align:center; margin-bottom:30px; font-size:2rem; color:#8a0b81;">Our Products</h2>
+    <div class="products">
+      <!-- Product 1 with auto slideshow -->
+      <div class="product-card">
+        <div class="slideshow-container">
+          <img class="slide active" src="LCHD.jpg" alt="Decor 1">
+          <img class="slide" src="27.png" alt="Decor 2">
+          <img class="slide" src="28.png" alt="Decor 3">
+          <img class="slide" src="29.png" alt="Decor 4">
+          <img class="slide" src="30.png" alt="Decor 5">
+          <img class="slide" src="31.png" alt="Decor 6">
+          <img class="slide" src="32.png" alt="Decor 7">
+        </div>
+        <h3>Laminated Christmas Hanging Decor</h3>
+      </div>
+
+      <div class="product-card"><img src="2026 Phil. Calendar.png"><h3>Personalized 2026 Calendar</h3></div>
+      <div class="product-card"><img src="a4-2r.png"><h3>Photo Print 2R - A4</h3></div>
+      <div class="product-card"><img src="instax.jpg"><h3>Polaroid Inspired</h3></div>
+      <div class="product-card"><img src="Reg.png"><h3>Personalized Regular Size Keychain</h3></div>
+      <div class="product-card"><img src="Photostrip.png"><h3>Personalized Photostrip Keychain</h3></div>
+      <div class="product-card"><img src="Atm.jpg"><h3>Customized ATM Size Ref Magnet</h3></div>
+    </div>
+  </section>
+
   <footer>
     <p>© 2025 Print Craft. All Rights Reserved.</p>
   </footer>
 
-  <!-- ===== Script for Toggle ===== -->
   <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
+    const menuToggle=document.getElementById("menu-toggle");
+    const navLinks=document.getElementById("nav-links");
+    menuToggle.addEventListener("click",()=>{navLinks.classList.toggle("show");});
 
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
+    // Auto slideshow for product 1
+    const slides=document.querySelectorAll(".slideshow-container .slide");
+    let slideIndex=0;
+    setInterval(()=>{
+      slides[slideIndex].classList.remove("active");
+      slideIndex=(slideIndex+1)%slides.length;
+      slides[slideIndex].classList.add("active");
+    },3000);
   </script>
 </body>
 </html>
